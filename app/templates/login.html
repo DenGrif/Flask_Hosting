@@ -1,10 +1,25 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends 'base.html' %}
 
-</body>
-</html>
+{% block content %}
+<div class="container mt-5">
+    <h1 class="text-center mb-4">Вход</h1>
+    <form method="post" action="{{ url_for('login') }}" class="border p-4 rounded shadow-sm">
+        {{ form.hidden_tag() }}
+
+        <div class="mb-3">
+            <label for="{{ form.username.id }}" class="form-label">{{ form.username.label }}</label>
+            {{ form.username(class="form-control") }}
+        </div>
+
+        <div class="mb-3">
+            <label for="{{ form.password.id }}" class="form-label">{{ form.password.label }}</label>
+            {{ form.password(class="form-control") }}
+        </div>
+
+        <div class="d-flex justify-content-between">
+            <button type="submit" class="btn btn-primary">{{ form.submit.label }}</button>
+            <a href="{{ url_for('register') }}" class="btn btn-link">Нет аккаунта? Регистрация</a>
+        </div>
+    </form>
+</div>
+{% endblock %}
